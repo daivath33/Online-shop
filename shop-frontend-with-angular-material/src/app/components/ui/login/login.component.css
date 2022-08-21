@@ -1,0 +1,31 @@
+mat-form-field{
+  width: 350px;
+  font-size: 12px;
+}
+
+mat-card-title{
+  text-align: center;
+}
+
+mat-card-actions button{
+  border-radius: 30px;
+  padding: 1px 30px;
+}
+
+.label{
+  font-size: 22px;
+  font-weight: 600;
+  text-align: center;
+  color: #673ab7;
+  text-shadow: 0.5px 1px 2px rgb(182, 178, 178); 
+}
+
+.signup-label{
+  color: #673ab7; 
+  font-weight: 600;
+  text-shadow: 0.5px 1px 2px rgb(182, 178, 178); 
+  margin-top:20px;
+}
+
+
+

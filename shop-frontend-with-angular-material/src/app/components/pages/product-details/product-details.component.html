@@ -1,0 +1,35 @@
+<section fxLayout="row wrap" fxLayoutAlign="center center">
+  <mat-card fxFlex="700px" fxFlex.xs="100%">
+    <mat-card-title-group>
+      <mat-card-content>
+        <div fxLayout="column wrap" fxLayoutGap="40px">
+          <div fxLayout="row wrap" fxFlex>
+            <div fxFlex><strong>Title:</strong></div>
+            <div fxFlex>{{ product?.title }}</div>
+          </div>
+          <div fxLayout="row wrap" fxFlex>
+            <div fxFlex><strong>Category:</strong></div>
+            <div fxFlex>{{ product?.category.title }}</div>
+          </div>
+          <div fxLayout="row wrap" fxFlex>
+            <div fxFlex><strong>Price:</strong></div>
+            <div fxFlex>{{ product?.price | currency }}</div>
+          </div>
+        </div>
+        <mat-card-actions>
+          <button
+            mat-raised-button
+            color="accent"
+            (click)="addProductToCart(product)"
+          >
+            Add to Shopping-Cart
+          </button>
+        </mat-card-actions>
+      </mat-card-content>
+      <img mat-card-xl-image src="{{ product.image }}" />
+    </mat-card-title-group>
+    <mat-card-content>
+      <b>Description:</b> {{ product.description }}
+    </mat-card-content>
+  </mat-card>
+</section>

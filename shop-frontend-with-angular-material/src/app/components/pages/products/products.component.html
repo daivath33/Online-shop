@@ -1,0 +1,59 @@
+<mat-drawer-container>
+    <mat-drawer mode="side" opened>
+      <div fxHide.gt-xs>
+    <button mat-button [matMenuTriggerFor]="menu" > 
+     <mat-icon>menu</mat-icon></button>
+        <mat-menu #menu="matMenu" >
+          <button mat-menu-item routerLink="/menu" (click)="getAllProducts()"><span>All Products</span></button>   
+          <button mat-menu-item routerLink="/menu" 
+              (click)="filterByCategory(category.title)" 
+              *ngFor="let category of categories$ | async"><span>{{category.title}}</span></button>      
+        </mat-menu>
+      </div>
+
+        <mat-nav-list fxHide.xs>
+          <a mat-list-item 
+              (click)="getAllProducts()"><h4>All Products</h4>
+          </a>
+          
+          <a mat-list-item 
+          *ngFor="let category of categories$ | async"
+                    (click)="filterByCategory(category.title)"
+          >
+            <h4>{{ category.title }}</h4>
+          </a>
+        </mat-nav-list>
+   
+    </mat-drawer>
+  
+    <div fxLayout="row wrap" fxLayoutAlign="end">
+      <mat-form-field
+        class="example-full-width"
+        appearance="outline"
+        fxFlex="300px"
+        fxFlex.xs="100%">
+        <mat-label>Search by Title...</mat-label>
+        <input #query (keyup)="filter(query.value)" matInput placeholder="Search By Title..." />
+        <mat-icon matSuffix>search</mat-icon>
+      </mat-form-field>
+    </div>
+  
+     <mat-card class="container">   
+      <div *ngFor="let product of filteredProducts$ | async">
+        <div class="card">
+          <div class="imgBox">
+            <img src="{{ product.image }}" alt="mouse corsair" class="mouse"/>
+          </div>
+          <div class="contentBox">
+            <h3>{{ product.title }}</h3>
+            <h4 class="price">{{ product.price }} Eur</h4>
+            <button mat-raised-button color="accent" (click)="productDetails(product.id)">
+              View Details
+            </button
+            >
+          </div>
+        </div>
+      </div>
+    </mat-card>
+  </mat-drawer-container>
+  

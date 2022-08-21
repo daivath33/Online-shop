@@ -1,0 +1,63 @@
+<section fxLayout="row wrap" fxLayoutAlign="center center">
+  <mat-card fxFlex="400px" fxFlex.xs="100%">
+      <mat-card-title class="label">Login</mat-card-title>
+      <form  (ngSubmit)="onSubmit()" autocomplete="off" novalidate fxLayout="column wrap"
+            fxLayoutAlign="center center" fxLayoutGap="10px">
+        <mat-card-content>
+          <p>
+            <mat-form-field appearance="outline">
+              <mat-label>Email</mat-label>
+              <input
+                matInput
+                required
+                id="email"
+                name="email"
+                [(ngModel)]="email"
+                type="email"
+                placeholder="Email"
+                [formControl]="emailFormControl"
+              />
+              <mat-error
+                *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                Please enter a valid email address
+              </mat-error>
+              <mat-error *ngIf="emailFormControl.hasError('required')">
+                Email is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field appearance="outline">
+              <mat-label>Password</mat-label>
+              <input
+                matInput
+                required
+                id="password"
+                name="password"
+                [(ngModel)]="password"
+                type="text"
+                placeholder="Password"
+                #passwordFormControl="ngModel"
+              />
+              <mat-error *ngIf="passwordFormControl.hasError('required')">
+                Password is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="accent" mat-dialog-close>Close</button>
+          <button type="submit" mat-raised-button color="primary">Login</button>
+        </mat-card-actions>    
+      </form>
+
+        <div fxLayout="row wrap" fxLayoutAlign="center center">
+          <mat-card-title class="signup-label">Are you not registered?</mat-card-title>
+          <mat-card-actions>
+            <button style="margin-left:10px" mat-raised-button color="primary" (click)="signupUser()">Register yourself</button>
+          </mat-card-actions>
+        </div>
+    </mat-card>
+</section>
+
+

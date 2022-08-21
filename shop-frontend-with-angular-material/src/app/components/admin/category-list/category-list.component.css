@@ -1,0 +1,31 @@
+table {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  min-width: 500px;
+  max-width: 800px;;
+}
+
+td, th {
+  width:33%;
+}
+
+th.mat-header-cell {
+  text-align: left;
+  max-width: 300px;
+}
+
+.action .material-icons{  
+  font-size: x-large;
+  transition: all .3s ease-out; 
+}
+  
+.action .material-icons:hover{
+  font-size: x-large;
+  transition: all .3s ease-in-out;
+  transform: scale(1.2);
+}
+
+.demo-button{
+  border-radius: 30px;
+}

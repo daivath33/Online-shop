@@ -1,0 +1,52 @@
+<mat-toolbar color="primary">
+  <div fxHide.gt-xs>
+    <button mat-icon-button (click)="onToggleSidenav()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
+ <div>
+      <a routerLink="/home">E-SHOP</a>
+  </div>
+  
+  <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
+    <ul fxLayout fxLayoutGap="15px" class="navigation-items">
+      <li *ngIf="userService.isAdmin()">
+        <a mat-button [matMenuTriggerFor]="menu">
+          <mat-icon>expand_more</mat-icon>
+          Admin
+        </a>
+        <mat-menu #menu="matMenu" >
+          <button routerLink="/product/list" mat-menu-item>
+            Manage Products
+          </button>
+          <button routerLink="/category/list" mat-menu-item>
+            Manage Categories
+          </button>
+          <button routerLink="/user/list" mat-menu-item>Manage Users</button>
+        </mat-menu>
+      </li>
+      <li>
+        <a routerLink="/home">Home</a>
+      </li>
+      <li>
+        <a routerLink="/menu">Shop</a>
+      </li>
+      <li>
+        <a *ngIf="!(loginStatus$ | async)" (click)="loginUser()"routerLink="/" >Login</a>
+        <a *ngIf="loginStatus$ | async" (click)="logoutUser()" routerLink="/" >Logout</a>
+      </li>
+      <li>
+        <a
+          routerLink="/shopping/cart"
+          mat-icon-button
+          class="example-icon shopping-cart"
+          aria-label="Example icon-button with shopping-cart icon"
+        >
+          <mat-icon matBadge="{{ totalItem }}" matBadgeColor="accent"
+            >shopping_cart</mat-icon
+          >
+        </a>
+      </li>
+    </ul>
+  </div>
+</mat-toolbar>

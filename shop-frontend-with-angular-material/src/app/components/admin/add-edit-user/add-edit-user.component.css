@@ -1,0 +1,21 @@
+mat-dialog{
+  font-size: 12px;
+}
+
+.example-container .mat-form-field + .mat-form-field {
+  margin-left: 8px;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.label{
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+  color: #673ab7;
+  text-shadow: 0.5px 1px 2px rgb(182, 178, 178);
+  width: 400px;
+  width: 100%;
+}

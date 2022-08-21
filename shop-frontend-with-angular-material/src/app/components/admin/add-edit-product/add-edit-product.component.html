@@ -1,0 +1,91 @@
+<section fxLayout="row wrap" fxLayoutAlign="center center">
+  <mat-card fxFlex="400px" fxFlex.xs="100%">
+    <mat-card-title class="label">{{ actionName }} Product</mat-card-title>
+    <form
+      [formGroup]="productForm"
+      (ngSubmit)="onSubmit()"
+      autocomplete="off"
+      novalidate
+      fxLayout="column wrap"
+      fxLayoutAlign="center center"
+      fxLayoutGap="10px"
+    >
+      <mat-card-content>
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Title</mat-label>
+            <input matInput type="text" formControlName="title" />
+            <mat-error *ngIf="checkError('title', 'required')"
+              >Title is <strong>required</strong></mat-error
+            >
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Image Url</mat-label>
+            <input matInput type="text" formControlName="image" />
+            <mat-error *ngIf="checkError('image', 'required')"
+              >Image Url is <strong>required</strong></mat-error
+            >
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Price</mat-label>
+            <input matInput type="number" formControlName="price" />
+            <mat-error *ngIf="checkError('price', 'required')"
+              >Price is <strong>required</strong></mat-error
+            >
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Quantity</mat-label>
+            <input matInput type="number" formControlName="quantity" />
+            <mat-error *ngIf="checkError('quantity', 'required')"
+              >Quantity is <strong>required</strong></mat-error
+            >
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Category</mat-label>
+            <mat-select formControlName="category">
+              <mat-option
+                *ngFor="let category of categories"
+                [value]="category"
+              >
+                {{ category.title }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="checkError('category', 'required')">
+              Category is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Description</mat-label>
+            <textarea
+              matInput
+              formControlName="description"
+              rows="4"
+              cols="150"
+            >
+                  Product Description</textarea
+            >
+            <mat-error *ngIf="checkError('description', 'required')">
+              Description is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="accent" mat-dialog-close>Close</button>
+        <button type="submit" mat-raised-button color="primary">
+          {{ actionButton }}
+        </button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</section>
